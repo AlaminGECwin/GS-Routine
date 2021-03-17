@@ -246,7 +246,17 @@
                     <a href="index.php?function=slot_task&slot_h=<?php echo $r;?>&slot_d=<?php echo $i;?>">
                         <td class="m-0 p-0 font-weight-bold text-dark text-center bg-warning" style="font-size: 20px;">
                             <a href="index.php?function=slot_task&slot_h=<?php echo $r;?>&slot_d=<?php echo $i;?>">
-                                task-<?php echo $i." ".$r;?>
+                                <?php
+                                $slot_task=$this->obj->get_slot_task($r,$i);
+                                if(!empty($slot_task)){
+                                  $id=$slot_task['task_id'];
+                                  echo $this->obj->get_task_name($id);
+                                }else{
+                                  ?>
+                                  <p class="text-info">Free</p>
+                                  <?php
+                                }
+                                 ?>
                             </a>
                         </td>
 
@@ -257,7 +267,17 @@
 
                         <td class="m-0 p-0 bg-secondary text-white">
                             <a href="index.php?function=slot_task&slot_h=<?php echo $r;?>&slot_d=<?php echo $i;?>">
-                                task-<?php echo $i." ".$r;?>
+                            <?php
+                                $slot_task=$this->obj->get_slot_task($r,$i);
+                                if(!empty($slot_task)){
+                                  $id=$slot_task['task_id'];
+                                  echo $this->obj->get_task_name($id);
+                                }else{
+                                  ?>
+                                  <p class="text-warning">Free</p>
+                                  <?php
+                                }
+                                 ?>
                             </a>
                         </td>
 
@@ -268,7 +288,18 @@
 
                         <td class="m-0 p-0">
                             <a href="index.php?function=slot_task&slot_h=<?php echo $r;?>&slot_d=<?php echo $i;?>">
-                                task-<?php echo $i." ".$r;?>
+                            <?php
+                                $slot_task=$this->obj->get_slot_task($r,$i);
+                                if(!empty($slot_task)){
+                                  $id=$slot_task['task_id'];
+                                  echo $this->obj->get_task_name($id);
+                                  
+                                }else{
+                                  ?>
+                                  <p class="text-info">Free</p>
+                                  <?php
+                                }
+                                 ?>
                             </a>
                         </td>
 

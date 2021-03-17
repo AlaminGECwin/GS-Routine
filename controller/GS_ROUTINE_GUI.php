@@ -11,7 +11,8 @@ class GS_ROUTINE_GUI_Controller{
 	}
 	
 	function home(){
-		$this->obj->test_db();
+		
+		
 		include(getURL('dashboard'));
 		
 	}
@@ -35,9 +36,9 @@ class GS_ROUTINE_GUI_Controller{
 		$slot_d=$_POST['slot_d'];
 		$this->obj->sql_execute("delete from `slot_task` where slot_h='$slot_h' and slot_d='$slot_d'");
 
-		//$task_name=$_POST['task'];
-		//$this->obj->sql_execute("INSERT INTO `tasks` (`id`, `task_name`) VALUES (NULL, '$task_name')");
-		//echo "<script>location='index.php?function=home'</script>";
+		
+		$this->obj->sql_execute("INSERT INTO `slot_task` (`id`, `task_id`, `slot_h`, `slot_d`) VALUES (NULL, '$task_id', '$slot_h', '$slot_d')");
+		echo "<script>location='index.php?function=home'</script>";
 	}
 	
 	function slot_task(){

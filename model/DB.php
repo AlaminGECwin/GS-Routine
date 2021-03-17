@@ -13,9 +13,9 @@ class Database{
 
 	private function online(){
 		$this->host='localhost';
-		$this->dbusername='rowzatus_rsam';
-		$this->dbpassword='54213;.,HbD+';
-		$this->dbname='rowzatus_rsam';
+		$this->dbusername='bazarsho_gsroutine';
+		$this->dbpassword='5421fd3;.,HbD+';
+		$this->dbname='bazarsho_gsroutine';
 		try{
 			$connection=new PDO("mysql:host=$this->host;dbname=$this->dbname",$this->dbusername,$this->dbpassword);
 			
@@ -80,6 +80,30 @@ class Model extends Database{
 		$data=$stmt->fetchAll(PDO::FETCH_ASSOC);
 		//echo $sql;
 		return $data;
+	}
+	function get_task_name($id){
+		$database=new Database();
+		$sql="SELECT * FROM `tasks` where id='$id'";
+		$stmt=$database->connect()->prepare($sql);
+		$stmt->execute();
+		$data=$stmt->fetchAll(PDO::FETCH_ASSOC);
+		//echo $sql;
+		return $data[0]['task_name'];
+	}
+	function get_slot_task($h,$d){
+		$database=new Database();
+		$sql="SELECT * FROM `slot_task` where slot_h='$h' and slot_d='$d'";
+		$stmt=$database->connect()->prepare($sql);
+		$stmt->execute();
+		$data=$stmt->fetchAll(PDO::FETCH_ASSOC);
+		//echo $sql;
+		if(!empty($data)){
+			return $data[0];
+		}else{
+			return $data;
+		}
+		
+
 	}
 }
 ?>
